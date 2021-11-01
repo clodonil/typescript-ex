@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appnode-deployment
+  namespace: apps
+  labels:
+    app: app-node
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-node
+  template:
+    metadata:
+      labels:
+        app: app-node
+    spec:
+      containers:
+      - name: app-node
+        image: __IMAGE__
+        ports:
+        - containerPort: 8080
+
